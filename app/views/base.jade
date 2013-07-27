@@ -3,31 +3,37 @@ html(lang="en")
     head
         title Concept Canvas Application
         link(rel="stylesheet", type="text/css", href="/css/picboard.css")
-        script(type="text/javascript", src="/js/jquery-min.js")
+        script(type="text/javascript", src="/js/jquery.min.js")
         script(type="text/javascript", src="/js/fabric.min.js")
     body
         h1
             i.icon-beaker
             span Concept Canvas Application
-        p View page source to see required resources being served
+        p Drag images from the library onto the canvas, use the tools to manipulate the canavs contents
 
-        div#container
-            h2 Whats next
-            p The actual front end
-            ul
-                li Add Canvas and Image library
-                li Place image onto canvas
-                li Drag image to reposition
-                li Controls for bring to front/send to back
-        
-        h2
-            i.icon-thumbs-up
-            span Happy so far?
-        p.
-            If you happy with the first part, please leave some feedback on my gig. Then we will have a catchup and start looking at the next stages
-            which will be more involved.
+        div#app
+            div#canvas-wrapper(ondragover="dragOver(event)", ondrop="handleDrop(event)")
+                canvas#main(width="800", height="600")
+                    Your browser doesn't support canvas, please checkout Google Chrome or Mozilla Firefox.
 
-        a(href="http://fiverr.com/hendore/write-advise-or-fix-your-php-nodejs-html5-css3")
-            div#btn-view-gig
-                i.icon-tags
-                span Visit My Gig
+            div#tools
+                div.btn-bring-forward(title="Bring Forward", onclick="bringForward()")
+                    i.icon-angle-up
+
+                div.btn-bring-to-top(title="Bring to Top", onclick="bringToTop()")
+                    i.icon-double-angle-up
+
+                div.btn-send-to-bottom(title="Send to Bottom", onclick="sendToBottom()")
+                    i.icon-double-angle-down
+
+                div.btn-send-backward(title="Send Backwards", onclick="sendBackward()")
+                    i.icon-angle-down
+
+                div.btn-delete(title="Delete Selected Object", onclick="deleteSelected()")
+                    i.icon-trash
+
+            div#images
+                -each image in images
+                    img(src="/img/library/" + image, draggable="true", ondragstart="dragStart(event)")
+
+        script(type="text/javascript", src="/js/concept.js")

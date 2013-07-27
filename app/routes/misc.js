@@ -1,3 +1,9 @@
+var fs = require('fs');
+
 module.exports.viewConceptApplication = function(req, res) {
-    res.render('base');
-}
+    fs.readdir('./public/img/library', function(err, images) {
+        res.render('base', {
+            images: images
+        });
+    });
+};

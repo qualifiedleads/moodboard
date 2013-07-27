@@ -16,6 +16,8 @@ div#container {
 }
 
 h1, h2 {
+    margin: 0 0 12px 0;
+
     i {
         display: inline-block;
         margin-right: 12px;
@@ -44,3 +46,58 @@ a {
         box-shadow: 0 0 5px rgba(0,0,0,0.4);
     }
 }
+
+div#app {
+    position: relative;
+
+    div#canvas-wrapper {
+        background-color: #FFFFFF;
+        border: 1px solid #DEDEDE;
+
+        position: absolute;
+        top: 0; left: 0;
+        width: 800px;
+        height: 600px;
+    }
+
+    #tools {
+        position: absolute;
+        top: 12px; left: 12px;
+
+        background-color: #222222;
+        color: #ffffff;
+
+        div[class*="btn"] {
+            float: left;
+            font-size: 18px;
+            padding: 8px 12px;
+            cursor: pointer;
+
+            &:hover {
+                color: green;
+            }
+        }
+    }
+
+    div#images {
+        position: absolute;
+        left: 832px; top: 0;
+
+        padding: 12px;
+        background-color: #FFFFFF;
+        border: 1px solid #DEDEDE;
+
+        img {
+            width: 64px;
+            height: 64px;
+            display: inline-block;
+            border: 1px solid #FFFFFF;
+            cursor: pointer;
+
+            &:hover {
+                border-color: #DEDEDE;
+            }
+        }
+    }
+}
+
